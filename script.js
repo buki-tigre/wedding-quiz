@@ -332,20 +332,39 @@ document.addEventListener("DOMContentLoaded", function () {
   const brideBtn = document.querySelector(".contact-btn.bride");
   const kakaoBtn = document.querySelector(".contact-btn.kakao");
 
+  // 신랑, 신부 전화번호 설정
+  const groomPhoneNumber = "010-1234-5678";
+  const bridePhoneNumber = "010-8765-4321";
+
   if (groomBtn) {
     groomBtn.addEventListener("click", function () {
-      alert("신랑에게 연락하기: 010-1234-5678");
+      // 모바일 환경인지 확인
+      if (/iPhone|iPad|iPod|Android/i.test(navigator.userAgent)) {
+        // 전화 걸기 기능 실행
+        window.location.href = `tel:${groomPhoneNumber.replace(/-/g, "")}`;
+      } else {
+        // 데스크톱에서는 알림창으로 표시
+        alert(`신랑에게 연락하기: ${groomPhoneNumber}`);
+      }
     });
   }
 
   if (brideBtn) {
     brideBtn.addEventListener("click", function () {
-      alert("신부에게 연락하기: 010-8765-4321");
+      // 모바일 환경인지 확인
+      if (/iPhone|iPad|iPod|Android/i.test(navigator.userAgent)) {
+        // 전화 걸기 기능 실행
+        window.location.href = `tel:${bridePhoneNumber.replace(/-/g, "")}`;
+      } else {
+        // 데스크톱에서는 알림창으로 표시
+        alert(`신부에게 연락하기: ${bridePhoneNumber}`);
+      }
     });
   }
 
   if (kakaoBtn) {
     kakaoBtn.addEventListener("click", function () {
+      // 카카오톡 공유 기능 (추후 구현 예정)
       alert("카카오톡으로 공유하기 기능은 준비 중입니다.");
     });
   }

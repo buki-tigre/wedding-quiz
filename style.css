@@ -743,6 +743,9 @@ header::after {
   transition: all 0.3s ease;
   position: relative;
   overflow: hidden;
+  text-decoration: none;
+  text-align: center;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
 
 .contact-btn.groom {
