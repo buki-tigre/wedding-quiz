@@ -245,16 +245,55 @@ document.addEventListener("DOMContentLoaded", function () {
   // 메시지 폼 처리 개선
   const messageForm = document.querySelector(".message-form");
   const messageThanks = document.querySelector(".message-thanks");
+  const nameInput = document.getElementById("sender-name");
+  const messageInput = document.getElementById("congratulation-message");
+  const submitMessageBtn = document.querySelector(".submit-message-btn");
 
   if (messageForm) {
+    // 입력 필드 초기화 및 포커스 이벤트 추가
+    if (nameInput) {
+      nameInput.value = "";
+      nameInput.addEventListener("focus", function () {
+        console.log("이름 입력 필드 포커스");
+      });
+      nameInput.addEventListener("click", function (e) {
+        e.stopPropagation();
+        console.log("이름 입력 필드 클릭");
+      });
+    }
+
+    if (messageInput) {
+      messageInput.value = "";
+      messageInput.addEventListener("focus", function () {
+        console.log("메시지 입력 필드 포커스");
+      });
+      messageInput.addEventListener("click", function (e) {
+        e.stopPropagation();
+        console.log("메시지 입력 필드 클릭");
+      });
+    }
+
+    // 터치 이벤트 추가
+    if (nameInput) {
+      nameInput.addEventListener("touchstart", function (e) {
+        e.stopPropagation();
+        console.log("이름 입력 필드 터치 시작");
+      });
+    }
+
+    if (messageInput) {
+      messageInput.addEventListener("touchstart", function (e) {
+        e.stopPropagation();
+        console.log("메시지 입력 필드 터치 시작");
+      });
+    }
+
     messageForm.addEventListener("submit", function (e) {
       e.preventDefault();
-
-      const nameInput = this.querySelector("input");
-      const messageInput = this.querySelector("textarea");
+      console.log("폼 제출 시도");
 
       if (nameInput.value.trim() !== "" && messageInput.value.trim() !== "") {
-        // 메시지 데이터 저장 (실제로는 서버에 전송하는 코드가 추가될 수 있음)
+        // 메시지 데이터 저장
         const messageData = {
           name: nameInput.value,
           message: messageInput.value,
@@ -275,6 +314,17 @@ document.addEventListener("DOMContentLoaded", function () {
         alert("이름과 메시지를 모두 입력해주세요.");
       }
     });
+
+    // 제출 버튼 별도 이벤트 처리
+    if (submitMessageBtn) {
+      submitMessageBtn.addEventListener("click", function (e) {
+        console.log("메시지 제출 버튼 클릭");
+        if (nameInput.value.trim() === "" || messageInput.value.trim() === "") {
+          e.preventDefault();
+          alert("이름과 메시지를 모두 입력해주세요.");
+        }
+      });
+    }
   }
 
   // 연락하기 버튼 처리
