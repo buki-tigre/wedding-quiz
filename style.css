@@ -542,6 +542,7 @@ header::after {
 
 .map-container {
   height: 300px;
+  max-height: 400px;
   background-color: #f5f5f5;
   margin-bottom: 15px;
   border-radius: 10px;
