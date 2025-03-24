@@ -21,20 +21,22 @@ body {
 
 header {
   text-align: center;
-  padding: 40px 0 30px;
+  padding: 40px 20px 30px;
   background-color: #fff0f0;
   position: relative;
   overflow: hidden;
 }
 
 header h1 {
-  font-size: 30px;
+  font-size: 28px;
   font-weight: 500;
   color: #d17676;
   letter-spacing: 1px;
   position: relative;
   z-index: 2;
   font-family: "Nanum Myeongjo", serif;
+  margin: 0 auto;
+  max-width: 90%;
 }
 
 header::before,
@@ -145,7 +147,7 @@ header::after {
 .wedding-info {
   text-align: center;
   margin: 0;
-  padding: 40px 20px;
+  padding: 40px 25px;
   background-color: #fff;
   position: relative;
 }
@@ -189,10 +191,10 @@ header::after {
 
 .intro-message {
   background-color: #fff0f0;
-  padding: 30px;
+  padding: 30px 25px;
   text-align: center;
-  line-height: 1.8;
-  margin: 0 0 40px;
+  line-height: 1.9;
+  margin: 0 15px 40px;
   color: #6e6e6e;
   position: relative;
   border-radius: 0 0 30px 30px;
@@ -219,16 +221,17 @@ header::after {
 
 .section-title {
   text-align: center;
-  margin: 40px 0 20px;
+  margin: 40px 15px 20px;
   position: relative;
   padding-bottom: 15px;
 }
 
 .section-title h2 {
-  font-size: 24px;
+  font-size: 22px;
   font-weight: 500;
   color: #d17676;
   font-family: "Nanum Myeongjo", serif;
+  letter-spacing: 1px;
 }
 
 .section-title:after {
@@ -243,7 +246,7 @@ header::after {
 }
 
 .section-container {
-  padding: 0 20px;
+  padding: 0 15px;
 }
 
 .quiz-section,
@@ -252,7 +255,7 @@ header::after {
   background-color: #fff;
   padding: 25px 20px;
   border-radius: 15px;
-  margin: 20px 0;
+  margin: 20px 10px;
   box-shadow: 0 3px 15px rgba(233, 175, 196, 0.15);
   position: relative;
 }
@@ -390,14 +393,16 @@ header::after {
   font-weight: 500;
   margin-bottom: 20px;
   color: #666;
-  font-size: 18px;
-  line-height: 1.5;
+  font-size: 17px;
+  line-height: 1.6;
+  padding: 0 5px;
 }
 
 .quiz-options {
   display: grid;
   grid-template-columns: 1fr;
   gap: 12px;
+  padding: 0 5px;
 }
 
 .option-btn {
@@ -541,11 +546,11 @@ header::after {
 }
 
 .map-section {
-  margin: 0 0 30px;
+  margin: 0 10px 30px;
 }
 
 .map-container {
-  height: 250px;
+  height: 340px;
   background-color: #f5f5f5;
   margin-bottom: 15px;
   border-radius: 10px;
@@ -556,6 +561,7 @@ header::after {
   position: relative;
   z-index: 1;
   box-shadow: 0 3px 15px rgba(233, 175, 196, 0.15);
+  padding: 0;
 }
 
 .root_daum_roughmap {
@@ -588,15 +594,16 @@ header::after {
 
 .transportation-info {
   font-size: 15px;
-  margin: 20px 0;
+  margin: 20px 10px;
   line-height: 1.8;
   color: #666;
   position: relative;
   z-index: 1;
+  padding: 0 5px;
 }
 
 .transportation-info p {
-  margin-bottom: 8px;
+  margin-bottom: 10px;
 }
 
 .transportation-info strong {
@@ -605,7 +612,7 @@ header::after {
 }
 
 .message-section {
-  padding: 20px 0;
+  padding: 20px 5px;
   position: relative;
   z-index: 10;
 }
@@ -613,6 +620,7 @@ header::after {
 .message-form {
   position: relative;
   z-index: 20;
+  padding: 0 5px;
 }
 
 .message-form textarea {
@@ -716,17 +724,17 @@ header::after {
 .contact-buttons {
   display: flex;
   justify-content: space-between;
-  margin: 40px 20px;
-  gap: 10px;
+  margin: 40px 25px;
+  gap: 15px;
 }
 
 .contact-btn {
   flex: 1;
-  padding: 16px 0;
+  padding: 14px 0;
   border: none;
   border-radius: 10px;
   color: white;
-  font-size: 16px;
+  font-size: 15px;
   font-weight: 500;
   cursor: pointer;
   display: flex;
@@ -779,12 +787,13 @@ header::after {
 
 footer {
   text-align: center;
-  padding: 40px 0;
+  padding: 40px 20px;
   font-size: 14px;
   color: #999;
   margin-top: 30px;
   background-color: #fff0f0;
   position: relative;
+  line-height: 1.8;
 }
 
 footer::before {
