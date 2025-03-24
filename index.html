@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>김현아 박진수 결혼식 초대장</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Nanum+Myeongjo:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="container">
+      <header>
+        <h1>김현아 박진수 결혼식 초대장</h1>
+      </header>
+
+      <div class="main-image">
+        <div class="slideshow-container">
+          <div class="slide fade">
+            <img
+              src="https://sbqjslormffvdgnpnara.supabase.co/storage/v1/object/public/wedding//wedding.jpeg"
+              alt="신랑 신부 사진 1"
+            />
+          </div>
+          <div class="slide fade">
+            <img
+              src="https://sbqjslormffvdgnpnara.supabase.co/storage/v1/object/public/wedding/wedding-1.jpeg"
+              alt="신랑 신부 사진 1"
+            />
+          </div>
+          <div class="slide fade">
+            <img
+              src="https://sbqjslormffvdgnpnara.supabase.co/storage/v1/object/public/wedding/wedding-2.jpeg"
+              alt="신랑 신부 사진 2"
+            />
+          </div>
+          <div class="slide fade">
+            <img
+              src="https://sbqjslormffvdgnpnara.supabase.co/storage/v1/object/public/wedding/wedding-3.jpeg"
+              alt="신랑 신부 사진 3"
+            />
+          </div>
+          <div class="slide fade">
+            <img
+              src="https://sbqjslormffvdgnpnara.supabase.co/storage/v1/object/public/wedding/wedding-4.jpeg"
+              alt="신랑 신부 사진 4"
+            />
+          </div>
+          <div class="slide-dots">
+            <span class="dot active" data-slide="0"></span>
+            <span class="dot" data-slide="1"></span>
+            <span class="dot" data-slide="2"></span>
+            <span class="dot" data-slide="3"></span>
+            <span class="dot" data-slide="4"></span>
+          </div>
+        </div>
+      </div>
+
+      <div class="wedding-info">
+        <div class="couple-names">
+          김현아 <span class="heart-icon">♥</span> 박진수
+        </div>
+        <div class="wedding-date">2025년 8월 30일 토요일 오후 2시</div>
+        <div class="wedding-place">포스코센터 아트홀</div>
+      </div>
+
+      <div class="intro-message">
+        서로의 마음을 함께 나누며 걸어온 소중한 시간<br />
+        이제 저희 두 사람이 하나가 되어<br />
+        새로운 시작을 함께 하려 합니다.<br /><br />
+        귀한 걸음으로 축복해 주시면<br />
+        더없는 기쁨으로 간직하겠습니다.
+      </div>
+
+      <div class="section-container">
+        <div class="section-title">
+          <h2>신랑신부 이야기</h2>
+        </div>
+
+        <div class="quiz-section">
+          <!-- 닉네임 입력 영역 -->
+          <div class="nickname-input">
+            <label>퀴즈 참여 닉네임</label>
+            <input
+              type="text"
+              id="nickname"
+              placeholder="닉네임을 입력해주세요"
+              required
+            />
+          </div>
+
+          <div class="quiz-intro">
+            저희 커플에 대한 재미있는 퀴즈가 준비되어 있어요! 🎮<br />
+            모든 문제를 풀고 결혼식에서 정답을 확인해 보세요!<br />
+            <strong>추첨을 통해 소정의 상품도 드립니다! ✨</strong>
+          </div>
+
+          <div class="quiz-progress">
+            <div class="quiz-progress-item active" data-id="1">1</div>
+            <div class="quiz-progress-item" data-id="2">2</div>
+            <div class="quiz-progress-item" data-id="3">3</div>
+            <div class="quiz-progress-item" data-id="4">4</div>
+            <div class="quiz-progress-item" data-id="5">5</div>
+          </div>
+
+          <div class="quiz-container">
+            <div class="quiz-item active" data-id="1">
+              <div class="quiz-question">
+                1. 신랑 신부가 첫 소개팅 때 먹은 음식은?
+              </div>
+              <div class="quiz-options">
+                <button class="option-btn" data-value="1">① 양꼬치</button>
+                <button class="option-btn" data-value="2">② 회</button>
+                <button class="option-btn" data-value="3">③ 순대국밥</button>
+                <button class="option-btn" data-value="4">④ 파스타</button>
+              </div>
+            </div>
+
+            <div class="quiz-item" data-id="2">
+              <div class="quiz-question">
+                2. 신랑 누나 부부가 운영하는 음식점의 이름은?
+              </div>
+              <div class="quiz-options">
+                <button class="option-btn" data-value="1">① 간참치&스시</button>
+                <button class="option-btn" data-value="2">② 건참치&스시</button>
+                <button class="option-btn" data-value="3">③ 군참치&스시</button>
+                <button class="option-btn" data-value="4">④ 곤참치&스시</button>
+              </div>
+            </div>
+
+            <div class="quiz-item" data-id="3">
+              <div class="quiz-question">3. 신랑의 차 색깔은?</div>
+              <div class="quiz-options">
+                <button class="option-btn" data-value="1">① 빨강</button>
+                <button class="option-btn" data-value="2">② 파랑</button>
+                <button class="option-btn" data-value="3">③ 초록</button>
+                <button class="option-btn" data-value="4">④ 노랑</button>
+              </div>
+            </div>
+
+            <div class="quiz-item" data-id="4">
+              <div class="quiz-question">
+                4. 신랑이 프로포즈했을 때 신부가 한 말은?
+              </div>
+              <div class="quiz-options">
+                <button class="option-btn" data-value="1">① "네!"</button>
+                <button class="option-btn" data-value="2">② "드디어!"</button>
+                <button class="option-btn" data-value="3">
+                  ③ "생각해볼게요"
+                </button>
+                <button class="option-btn" data-value="4">
+                  ④ "오늘 뭐 먹었어?"
+                </button>
+              </div>
+            </div>
+
+            <div class="quiz-item" data-id="5">
+              <div class="quiz-question">
+                5. 신랑과 신부가 가장 좋아하는 여행지는?
+              </div>
+              <div class="quiz-options">
+                <button class="option-btn" data-value="1">① 제주도</button>
+                <button class="option-btn" data-value="2">② 일본</button>
+                <button class="option-btn" data-value="3">③ 하와이</button>
+                <button class="option-btn" data-value="4">④ 유럽</button>
+              </div>
+            </div>
+
+            <div class="quiz-result">
+              성공적으로 응모되었습니다! ✨<br />
+              <span id="nickname-display"></span>님, 퀴즈 참여 감사합니다! ❤️<br />
+              정답은 결혼식 당일 공개되며, 추첨을 통해 소정의 상품을
+              드립니다.<br />
+              결혼식에서 만나요!
+            </div>
+          </div>
+        </div>
+
+        <div class="section-title">
+          <h2>오시는 길</h2>
+        </div>
+
+        <div class="map-section">
+          <div class="map-container">
+            <img
+              src="https://sbqjslormffvdgnpnara.supabase.co/storage/v1/object/public/wedding/map.png"
+              alt="지도"
+            />
+          </div>
+
+          <div class="transportation-info">
+            <p><strong>주소:</strong> 서울 강남구 테헤란로 440 포스코센터</p>
+            <p><strong>지하철:</strong> 2호선 선릉역 1번 출구에서 도보 10분</p>
+            <p><strong>주차:</strong> 포스코센터 주차장 이용</p>
+          </div>
+        </div>
+
+        <div class="section-title">
+          <h2>축하 메시지</h2>
+        </div>
+
+        <div class="message-section">
+          <form class="message-form">
+            <input type="text" placeholder="이름" required />
+            <textarea
+              placeholder="축하 메시지를 남겨주세요..."
+              required
+            ></textarea>
+            <button type="submit" class="submit-message-btn">
+              메시지 남기기
+            </button>
+          </form>
+
+          <div class="message-thanks" style="display: none">
+            <p>소중한 축하 메시지 감사합니다! ❤️</p>
+            <p>결혼식 후 모든 메시지를 소중히 읽어볼 예정입니다.</p>
+            <p>따뜻한 축복에 진심으로 감사드립니다.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="contact-buttons">
+        <button class="contact-btn groom">신랑에게 연락하기</button>
+        <button class="contact-btn bride">신부에게 연락하기</button>
+        <button class="contact-btn kakao">카카오톡으로 공유</button>
+      </div>
+
+      <footer>
+        <p>
+          김현아 <span class="heart-icon">♥</span> 박진수의 결혼을 축하해주셔서
+          감사합니다.
+        </p>
+        <p>2025년 8월 30일</p>
+      </footer>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
