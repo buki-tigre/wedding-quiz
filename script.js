@@ -370,4 +370,58 @@ document.addEventListener("DOMContentLoaded", function () {
       container.appendChild(flower);
     }
   }
+
+  // 카카오맵 초기화 (API 로드 후)
+  window.addEventListener("load", function () {
+    if (typeof kakao !== "undefined" && kakao.maps) {
+      const mapContainer = document.getElementById("map");
+
+      if (mapContainer) {
+        // 포스코센터 좌표 (테헤란로 440)
+        const latitude = 37.506629;
+        const longitude = 127.055586;
+
+        const mapOption = {
+          center: new kakao.maps.LatLng(latitude, longitude),
+          level: 3, // 확대 레벨
+        };
+
+        // 지도 객체 생성
+        const map = new kakao.maps.Map(mapContainer, mapOption);
+
+        // 마커 생성
+        const markerPosition = new kakao.maps.LatLng(latitude, longitude);
+        const marker = new kakao.maps.Marker({
+          position: markerPosition,
+        });
+
+        // 마커 표시
+        marker.setMap(map);
+
+        // 인포윈도우 생성
+        const infowindow = new kakao.maps.InfoWindow({
+          content:
+            '<div style="padding:5px;font-size:12px;text-align:center;">포스코센터 아트홀</div>',
+        });
+
+        // 인포윈도우 표시
+        infowindow.open(map, marker);
+
+        // 지도 크기 변경 시 중심점 재설정
+        window.addEventListener("resize", function () {
+          map.setCenter(markerPosition);
+        });
+
+        // 지도 확대/축소 컨트롤 추가
+        const zoomControl = new kakao.maps.ZoomControl();
+        map.addControl(zoomControl, kakao.maps.ControlPosition.RIGHT);
+
+        console.log("카카오맵이 성공적으로 로드되었습니다.");
+      }
+    } else {
+      console.error(
+        "카카오맵 API를 불러오는데 실패했습니다. API 키를 확인하세요."
+      );
+    }
+  });
 });
