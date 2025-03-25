@@ -151,7 +151,7 @@ const Quiz: React.FC = () => {
         "만두는 단백질이 부족해",
         "나는 다섯 개",
       ],
-      answer: "2",
+      answer: "4",
     },
   ];
 

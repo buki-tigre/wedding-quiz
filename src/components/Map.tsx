@@ -1,55 +1,23 @@
-import React, { useEffect } from "react";
+import React from "react";
 
 const Map: React.FC = () => {
-  useEffect(() => {
-    // 카카오맵 스크립트가 이미 로드되어 있는지 확인
-    const existingScript = document.querySelector(
-      ".daum_roughmap_loader_script"
-    );
-
-    if (!existingScript) {
-      // 다음 맵 로더 스크립트 추가
-      const script = document.createElement("script");
-      script.charset = "UTF-8";
-      script.className = "daum_roughmap_loader_script";
-      script.src =
-        "https://ssl.daumcdn.net/dmaps/map_js_init/roughmapLoader.js";
-      document.head.appendChild(script);
-
-      script.onload = initializeMap;
-    } else {
-      // 이미 스크립트가 로드된 경우
-      initializeMap();
-    }
-
-    // 맵 초기화 함수
-    function initializeMap() {
-      if (window.daum && window.daum.roughmap && window.daum.roughmap.Lander) {
-        new window.daum.roughmap.Lander({
-          timestamp: "1742903704202",
-          key: "2ngif",
-          mapWidth: "640",
-          mapHeight: "360",
-        }).render();
-      }
-    }
-
-    return () => {
-      // 컴포넌트 언마운트 시 필요한 정리 작업
-    };
-  }, []);
-
+  // 간단한 Google Maps iframe을 사용하여 지도 표시
   return (
     <div className="map-section">
       <div className="section-title">
         <h2>오시는 길</h2>
       </div>
       <div className="map-container">
-        {/* 다음 지도 컨테이너 */}
-        <div
-          id="daumRoughmapContainer1742903704202"
-          className="root_daum_roughmap root_daum_roughmap_landing"
-        ></div>
+        <iframe
+          title="더파티움 안양 위치"
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3168.0935072205203!2d126.94982087676056!3d37.39082993339762!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x357b60c20d333fef%3A0xd9495687af8aed3!2z642U7YOA7Yq4IOyViOyWke2ZlOuPhOyEnA!5e0!3m2!1sko!2skr!4v1714277171209!5m2!1sko!2skr"
+          width="100%"
+          height="100%"
+          style={{ border: 0, borderRadius: "10px" }}
+          allowFullScreen
+          loading="lazy"
+          referrerPolicy="no-referrer-when-downgrade"
+        ></iframe>
       </div>
       <div className="transportation-info">
         <p>
@@ -65,12 +33,5 @@ const Map: React.FC = () => {
     </div>
   );
 };
-
-// 타입스크립트를 위한 전역 변수 선언
-declare global {
-  interface Window {
-    daum: any;
-  }
-}
 
 export default Map;
