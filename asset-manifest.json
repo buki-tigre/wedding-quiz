@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/wedding-quiz/static/css/main.d479fa73.css",
+    "main.js": "/wedding-quiz/static/js/main.ea85620a.js",
+    "static/js/453.785420d2.chunk.js": "/wedding-quiz/static/js/453.785420d2.chunk.js",
+    "index.html": "/wedding-quiz/index.html",
+    "main.d479fa73.css.map": "/wedding-quiz/static/css/main.d479fa73.css.map",
+    "main.ea85620a.js.map": "/wedding-quiz/static/js/main.ea85620a.js.map",
+    "453.785420d2.chunk.js.map": "/wedding-quiz/static/js/453.785420d2.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.d479fa73.css",
+    "static/js/main.ea85620a.js"
+  ]
+}
