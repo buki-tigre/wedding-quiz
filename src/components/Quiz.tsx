@@ -1,10 +1,19 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
+
 interface QuizQuestion {
   id: number;
   question: string;
   options: string[];
   answer: string;
 }
+
+interface RankingItem {
+  nickname: string;
+  score: number;
+  timestamp: number;
+}
+
+// 점수 계산 함수
 const calculateScore = (
   answers: Record<number, string>,
   correctAnswers: Record<number, string>
@@ -18,6 +27,8 @@ const calculateScore = (
   });
   return Math.round((correctCount / Object.keys(correctAnswers).length) * 100);
 };
+
+// 정답 객체
 const getCorrectAnswers = (): Record<number, string> => {
   return {
     1: "3",
@@ -27,6 +38,8 @@ const getCorrectAnswers = (): Record<number, string> => {
     5: "2",
   };
 };
+
+// 피드백 생성 함수
 const generateFeedback = (score: number): string => {
   if (score === 100) {
     return "신랑 신부에 대해 정말 잘 알고 계시네요! :박수::박수::박수:";
@@ -45,6 +58,43 @@ const generateFeedback = (score: number): string => {
   }
   return "신랑 신부에 대해 더 알아갈 기회가 되셨길 바랍니다! 다음에 또 도전해보세요! :근육:";
 };
+
+// 로컬 스토리지에서 순위 데이터를 가져오는 함수
+const getRankingData = (): RankingItem[] => {
+  const rankingData = localStorage.getItem("quizRanking");
+  return rankingData ? JSON.parse(rankingData) : [];
+};
+
+// 새로운 점수를 순위에 추가하는 함수
+const addScoreToRanking = (nickname: string, score: number): RankingItem[] => {
+  const rankings = getRankingData();
+
+  // 새 기록 추가
+  const newRanking: RankingItem = {
+    nickname,
+    score,
+    timestamp: Date.now(),
+  };
+
+  rankings.push(newRanking);
+
+  // 점수와 시간 순으로 정렬 (점수 내림차순, 시간 오름차순)
+  const sortedRankings = rankings.sort((a, b) => {
+    if (a.score !== b.score) {
+      return b.score - a.score; // 점수 내림차순
+    }
+    return a.timestamp - b.timestamp; // 같은 점수면 먼저 획득한 사람이 위에
+  });
+
+  // 상위 100개만 저장
+  const topRankings = sortedRankings.slice(0, 100);
+
+  // 로컬 스토리지에 저장
+  localStorage.setItem("quizRanking", JSON.stringify(topRankings));
+
+  return topRankings;
+};
+
 const Quiz: React.FC = () => {
   const [nickname, setNickname] = useState<string>("");
   const [currentQuizId, setCurrentQuizId] = useState<number>(1);
@@ -52,6 +102,13 @@ const Quiz: React.FC = () => {
   const [showResult, setShowResult] = useState<boolean>(false);
   const [score, setScore] = useState<number>(0);
   const [feedback, setFeedback] = useState<string>("");
+  const [rankings, setRankings] = useState<RankingItem[]>([]);
+
+  // 컴포넌트 마운트 시 랭킹 데이터 로드
+  useEffect(() => {
+    setRankings(getRankingData());
+  }, []);
+
   const quizData: QuizQuestion[] = [
     {
       id: 1,
@@ -97,17 +154,25 @@ const Quiz: React.FC = () => {
       answer: "2",
     },
   ];
+
   const handleNicknameChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setNickname(e.target.value);
   };
+
   const calculateAndShowResult = () => {
     const correctAnswers = getCorrectAnswers();
     const userScore = calculateScore(answers, correctAnswers);
     const userFeedback = generateFeedback(userScore);
+
     setScore(userScore);
     setFeedback(userFeedback);
     setShowResult(true);
+
+    // 점수를 순위에 추가하고 업데이트된 순위 가져오기
+    const updatedRankings = addScoreToRanking(nickname, userScore);
+    setRankings(updatedRankings);
   };
+
   const handleOptionClick = (quizId: number, optionIndex: string) => {
     setAnswers((prev) => ({
       ...prev,
@@ -125,18 +190,22 @@ const Quiz: React.FC = () => {
     }
     return alert("퀴즈 응모를 위해 닉네임을 입력해주세요!");
   };
+
   const handleProgressClick = (quizId: number) => {
     if (quizId <= Math.max(currentQuizId, Object.keys(answers).length)) {
       setCurrentQuizId(quizId);
     }
   };
-  const handleRetryQuiz = () => {
-    setAnswers({});
-    setCurrentQuizId(1);
-    setShowResult(false);
-    setScore(0);
-    setFeedback("");
+
+  // 현재 사용자의 순위 계산
+  const getUserRank = (): number => {
+    return (
+      rankings.findIndex(
+        (item) => item.nickname === nickname && item.score === score
+      ) + 1
+    );
   };
+
   return (
     <div className="quiz-section">
       <div className="section-title">
@@ -219,6 +288,35 @@ const Quiz: React.FC = () => {
             <strong>{score}점</strong> 입니다!
           </p>
           <p className="feedback">{feedback}</p>
+
+          {/* 순위 표시 섹션 */}
+          <div className="ranking-section">
+            <h4>🏆 TOP 5 순위 🏆</h4>
+            <div className="ranking-list">
+              {rankings.slice(0, 5).map((rank, index) => (
+                <div
+                  key={index}
+                  className={`ranking-item ${
+                    rank.nickname === nickname && rank.score === score
+                      ? "current-user"
+                      : ""
+                  }`}
+                >
+                  <span className="rank-number">{index + 1}</span>
+                  <span className="rank-nickname">{rank.nickname}</span>
+                  <span className="rank-score">{rank.score}점</span>
+                </div>
+              ))}
+            </div>
+
+            {/* 현재 사용자의 순위가 5위 밖일 경우 표시 */}
+            {getUserRank() > 5 && (
+              <div className="my-rank">
+                <p>나의 순위: {getUserRank()}위</p>
+              </div>
+            )}
+          </div>
+
           <div className="answer-review">
             <h4>정답 확인</h4>
             {quizData.map((quiz) => (
@@ -240,12 +338,10 @@ const Quiz: React.FC = () => {
               </div>
             ))}
           </div>
-          <button className="retry-btn" onClick={handleRetryQuiz}>
-            다시 풀기
-          </button>
         </div>
       )}
     </div>
   );
 };
+
 export default Quiz;
