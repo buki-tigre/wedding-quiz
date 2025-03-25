@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/wedding-quiz/static/css/main.d479fa73.css",
-    "main.js": "/wedding-quiz/static/js/main.ea85620a.js",
+    "main.css": "/wedding-quiz/static/css/main.e5243a7b.css",
+    "main.js": "/wedding-quiz/static/js/main.b768e396.js",
     "static/js/453.785420d2.chunk.js": "/wedding-quiz/static/js/453.785420d2.chunk.js",
     "index.html": "/wedding-quiz/index.html",
-    "main.d479fa73.css.map": "/wedding-quiz/static/css/main.d479fa73.css.map",
-    "main.ea85620a.js.map": "/wedding-quiz/static/js/main.ea85620a.js.map",
+    "main.e5243a7b.css.map": "/wedding-quiz/static/css/main.e5243a7b.css.map",
+    "main.b768e396.js.map": "/wedding-quiz/static/js/main.b768e396.js.map",
     "453.785420d2.chunk.js.map": "/wedding-quiz/static/js/453.785420d2.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.d479fa73.css",
-    "static/js/main.ea85620a.js"
+    "static/css/main.e5243a7b.css",
+    "static/js/main.b768e396.js"
   ]
 }
